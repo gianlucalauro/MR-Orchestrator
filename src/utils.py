@@ -22,3 +22,12 @@ def get_unused_profiles():
 def refresh_csv(selected_profile):
     all_profiles.loc[all_profiles.Profiles == selected_profile, 'Last_Farm_Date'] = datetime.now().strftime(date_format)
     all_profiles.to_csv(path_to_CSV, index=False)
+
+
+def get_all_profiles():
+    return list(all_profiles.Profiles)
+
+
+def write_points(profile, points):
+    all_profiles.loc[all_profiles.Profiles == profile, 'Points'] = points
+    all_profiles.to_csv(path_to_CSV, index=False)
